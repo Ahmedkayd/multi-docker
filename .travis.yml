@@ -1,0 +1,20 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t ahismail/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true ahismail/react-test npm test
+
+after_success: 
+  - docker build -t ahismail/multi-client ./client 
+  - docker build -t ahismail/multi-nginx ./nginx
+  - docker build -t ahismail/multi-server ./server
+  - docker build -t ahismail/multi-worker ./worker
+  #login in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Take those images and push them to dokcer hub
+  - docker push ahismail/multi-client ./client 
+  - docker push ahismail/multi-nginx ./nginx
+  - docker push ahismail/multi-server ./serve 
+  - docker push ahismail/multi-worker ./worker
