@@ -10,7 +10,8 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" width="auto" height="200px"/>
+          <h1 className="App-title">Fib Calculator</h1>
           <a
             className="App-link"
             href="https://reactjs.org"
