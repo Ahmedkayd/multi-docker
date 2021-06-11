@@ -14,10 +14,10 @@ after_success:
   #login in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those images and push them to dokcer hub
-  - docker push ahismail/multi-client:latest 
-  - docker push ahismail/multi-nginx:latest
-  - docker push ahismail/multi-server:latest
-  - docker push ahismail/multi-worker:latest
+  - docker push ahismail/multi-client
+  - docker push ahismail/multi-nginx
+  - docker push ahismail/multi-server
+  - docker push ahismail/multi-worker
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
