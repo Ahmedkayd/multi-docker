@@ -16,6 +16,7 @@ services:
       context: ./nginx
     ports:
       - '3050:80'
+      
   api:
     container_name: server
     build:
